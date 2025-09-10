@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginBox {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.input {
+    margin-bottom: 1.5rem;
+}
+
+.loginButton {
+    margin-top: 1rem;
+}
