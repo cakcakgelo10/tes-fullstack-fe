@@ -1,9 +1,10 @@
 import React from 'react';
 import { IonList, IonItem, IonLabel, IonIcon } from '@ionic/react';
+// 1. Impor useHistory untuk navigasi
+import { useHistory } from 'react-router-dom';
 import { gridOutline, readerOutline, peopleOutline, chatbubblesOutline, personCircleOutline, settingsOutline, calendarOutline, logOutOutline } from 'ionicons/icons';
 import styles from './Sidebar.module.css';
 
-// array menu items
 const menuItems = [
   { text: 'Dashboard', icon: gridOutline, active: true },
   { text: 'Modul', icon: readerOutline },
@@ -17,12 +18,23 @@ const profileItems = [
   { text: 'Kalender', icon: calendarOutline },
 ]
 
-const Sidebar = () => {
+const Sidebar: React.FC = () => {
+  // 2. Inisialisasi hook useHistory
+  const history = useHistory();
+
+  // 3. Buat fungsi untuk handle logout
+  const handleLogout = () => {
+    // Hapus token dari localStorage
+    localStorage.removeItem('jwt_token');
+    
+    // Arahkan pengguna kembali ke halaman login
+    history.push('/login');
+  };
+
   return (
     <div className={styles.sidebarContainer}>
       <div>
         <div className={styles.logo}>
-          {/* You can place your logo image here */}
           Adhivasindo
         </div>
         <IonList className={styles.menuList}>
@@ -44,7 +56,8 @@ const Sidebar = () => {
         </IonList>
       </div>
       <div className={styles.logoutSection}>
-        <IonItem lines="none" button>
+        {/* 4. Tambahkan event onClick ke tombol Log Out */}
+        <IonItem lines="none" button onClick={handleLogout}>
           <IonIcon slot="start" icon={logOutOutline} color="danger" />
           <IonLabel color="danger">Log Out</IonLabel>
         </IonItem>
