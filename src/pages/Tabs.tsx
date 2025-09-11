@@ -6,6 +6,7 @@ import Dashboard from './Dashboard';
 import ProfilePage from './ProfilePage';
 import styles from './Tabs.module.css';
 import AddContentPage from './AddContentPage';
+import EditContentPage from './EditContentPage';
 
 const Tabs: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const Tabs: React.FC = () => {
       <IonRouterOutlet>
         <Route path="/tabs/dashboard" component={Dashboard} exact={true} />
         <Route path="/tabs/dashboard/new" component={AddContentPage} exact={true} />
+        <Route path="/tabs/dashboard/edit/:id" component={EditContentPage} exact={true} />
         <Route path="/tabs/profil" component={ProfilePage} exact={true} />
         
         <Route path="/tabs" exact={true}>
@@ -26,7 +28,7 @@ const Tabs: React.FC = () => {
           <IonLabel>Dashboard</IonLabel>
         </IonTabButton>
 
-        {/* komentari dulu Modul & Peserta karena halamannya belum ada */}
+        {/* Modul & Peserta halamannya belum ada */}
         {/* <IonTabButton tab="modul" href="/tabs/modul">
           <IonIcon icon={readerOutline} />
           <IonLabel>Modul</IonLabel>

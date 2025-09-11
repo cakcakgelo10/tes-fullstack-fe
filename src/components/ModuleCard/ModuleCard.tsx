@@ -1,6 +1,6 @@
 import React from 'react';
-import { IonButton, IonIcon } from '@ionic/react'; 
-import { trashBinOutline, createOutline } from 'ionicons/icons'; 
+import { IonButton, IonIcon } from '@ionic/react';
+import { trashBinOutline, createOutline } from 'ionicons/icons';
 import styles from './ModuleCard.module.css';
 
 interface ModuleCardProps {
@@ -8,12 +8,13 @@ interface ModuleCardProps {
   title: string;
   image: string;
   color: string;
-  onDelete: (id: number) => void; 
+  onDelete: (id: number) => void;
 }
 
 const ModuleCard: React.FC<ModuleCardProps> = ({ id, title, image, color, onDelete }) => {
   return (
     <div className={styles.card} style={{borderColor: color}}>
+      
       <div className={styles.imageContainer}>
           <img src={image} alt={title} />
       </div>
@@ -21,8 +22,14 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ id, title, image, color, onDele
         <span className={styles.category}>MATERI KOMPETENSI</span>
         <h4 className={styles.title}>{title}</h4>
       </div>
+      
       <div className={styles.actions}>
-        <IonButton fill="clear" size="small" color="medium">
+        <IonButton 
+          fill="clear" 
+          size="small" 
+          color="medium"
+          routerLink={`/tabs/dashboard/edit/${id}`}
+        >
             <IonIcon slot="icon-only" icon={createOutline} />
         </IonButton>
         <IonButton fill="clear" size="small" color="danger" onClick={() => onDelete(id)}>
