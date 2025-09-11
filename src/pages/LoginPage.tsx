@@ -1,5 +1,3 @@
-// src/pages/LoginPage.tsx
-
 import React, { useState } from 'react';
 import { IonPage, IonContent, IonInput, IonButton, IonToast } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
@@ -29,10 +27,8 @@ const LoginPage: React.FC = () => {
     return (
         <IonPage>
             <IonContent fullscreen>
-                {/* 1. SATU Container utama untuk menengahkan */}
                 <div className={styles.container}>
 
-                    {/* 2. SATU loginBox di dalamnya */}
                     <div className={styles.loginBox}>
                         <div className={styles.logo}>
                             <h1>Adhivasindo LMS</h1>

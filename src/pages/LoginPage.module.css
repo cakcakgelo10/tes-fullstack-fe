@@ -1,9 +1,9 @@
 .container {
   display: flex;
-  justify-content: center; /* Menengahkan secara horizontal */
-  align-items: center;   /* Menengahkan secara vertikal */
+  justify-content: center; 
+  align-items: center;   
   width: 100%;
-  height: 100%; /* <-- INI SANGAT PENTING */
+  height: 100%; 
   background: linear-gradient(135deg, #6e45e2 0%, #88d3ce 100%);
 }
 
@@ -27,30 +27,29 @@
 .logo h1 {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #fff; /* Sesuaikan warna logo */
+  color: #fff; 
   margin: 0;
 }
 
 .loginBox h2 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
-    color: #fff; /* Sesuaikan warna judul */
+    color: #fff; 
 }
 
 .loginBox p {
   margin-bottom: 2rem;
-  color: rgba(255, 255, 255, 0.8); /* Sesuaikan warna paragraf */
+  color: rgba(255, 255, 255, 0.8); 
 }
 
 .input {
   margin-bottom: 1.5rem;
-  /* Tambahkan gaya untuk input agar terlihat di background transparan */
   --background: rgba(255, 255, 255, 0.1); /* Background input transparan */
   --color: #fff; /* Warna teks input */
   --placeholder-color: rgba(255, 255, 255, 0.7); /* Warna placeholder */
   --border-color: rgba(255, 255, 255, 0.3); /* Warna border input */
   --highlight-color: #fff; /* Warna highlight saat fokus */
-  border-radius: 8px; /* Sudut sedikit melengkung */
+  border-radius: 8px; 
 }
 .input label {
   color: rgba(255, 255, 255, 0.8) !important;
