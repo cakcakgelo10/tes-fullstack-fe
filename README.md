@@ -39,7 +39,7 @@ Ini adalah aplikasi frontend untuk proyek tes Fullstack Developer. Aplikasi ini 
 - Ionic CLI
 - Server backend proyek ini harus sudah berjalan.
 
-**➡️ [Lihat Repository Backend di Sini]()**
+**➡️ [Lihat Repository Backend di Sini](https://github.com/cakcakgelo10/tes-fullstack)**
 
 ---
 
