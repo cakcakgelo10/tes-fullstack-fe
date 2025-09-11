@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+// =================================================================
+// INTERFACE DEFINITIONS
+// =================================================================
 interface LoginCredentials {
   email: string;
   password: string;
@@ -16,15 +19,22 @@ interface ContentData {
   body: string;
 }
 
-// instance axios dengan konfigurasi dasar
+interface ContentsParams {
+  search?: string;
+  page?: number;
+  limit?: number;
+}
+
+// =================================================================
+// AXIOS INSTANCE & INTERCEPTOR
+// =================================================================
 const apiClient = axios.create({
-  baseURL: 'http://localhost:3000/api', // URL dasar backend 
+  baseURL: 'http://localhost:3000/api',
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Interceptor untuk Menambahkan Token ke Setiap Request
 apiClient.interceptors.request.use((config) => {
   const token = localStorage.getItem('jwt_token');
   if (token) {
@@ -34,6 +44,10 @@ apiClient.interceptors.request.use((config) => {
 }, (error) => {
   return Promise.reject(error);
 });
+
+// =================================================================
+// API FUNCTIONS
+// =================================================================
 
 // === AUTHENTICATION ===
 export const loginUser = (credentials: LoginCredentials) => {
@@ -46,12 +60,17 @@ export const registerUser = (userData: RegisterData) => {
 
 
 // === CONTENTS ===
-export const getAllContents = () => {
-  return apiClient.get('/contents');
+
+export const getAllContents = (params: ContentsParams = {}) => {
+  return apiClient.get('/contents', { params }); 
 };
 
 export const createContent = (contentData: ContentData) => {
     return apiClient.post('/contents', contentData);
+}
+
+export const deleteContent = (id: number) => {
+    return apiClient.delete(`/contents/${id}`);
 }
 
 export default apiClient;

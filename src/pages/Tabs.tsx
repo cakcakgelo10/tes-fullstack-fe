@@ -5,12 +5,14 @@ import { gridOutline, personCircleOutline } from 'ionicons/icons';
 import Dashboard from './Dashboard';
 import ProfilePage from './ProfilePage';
 import styles from './Tabs.module.css';
+import AddContentPage from './AddContentPage';
 
 const Tabs: React.FC = () => {
   return (
     <IonTabs>
       <IonRouterOutlet>
         <Route path="/tabs/dashboard" component={Dashboard} exact={true} />
+        <Route path="/tabs/dashboard/new" component={AddContentPage} exact={true} />
         <Route path="/tabs/profil" component={ProfilePage} exact={true} />
         
         <Route path="/tabs" exact={true}>
