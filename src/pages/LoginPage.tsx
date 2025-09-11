@@ -1,4 +1,6 @@
-import React,  { useState } from 'react';
+// src/pages/LoginPage.tsx
+
+import React, { useState } from 'react';
 import { IonPage, IonContent, IonInput, IonButton, IonToast } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import { loginUser } from '../services/api';
@@ -15,13 +17,8 @@ const LoginPage: React.FC = () => {
         try {
             const response = await loginUser({ email, password });
             const token = response.data.token;
-
-            // Simpan token ke localStorage
             localStorage.setItem('jwt_token', token);
-
-            // Mengarahkan ke halaman dashboard
             history.push('/tabs/dashboard');
-
         } catch (error) {
             setToastMessage('Login Gagal. Periksa kembali email dan password Anda.');
             setShowToast(true);
@@ -31,47 +28,56 @@ const LoginPage: React.FC = () => {
 
     return (
         <IonPage>
-            <IonContent fullscreen className={styles.container}>
-                <div className={styles.loginBox}>
-                    <h1>Login</h1>
-                    <p>Silakan masuk untuk melanjutkan</p>
-                    
-                    <IonInput
-                        label="Email"
-                        labelPlacement="floating"
-                        fill="outline"
-                        type="email"
-                        value={email}
-                        onIonInput={(e) => setEmail(e.detail.value!)}
-                        className={styles.input}
-                    />
-                    
-                    <IonInput
-                        label="Password"
-                        labelPlacement="floating"
-                        fill="outline"
-                        type="password"
-                        value={password}
-                        onIonInput={(e) => setPassword(e.detail.value!)}
-                        className={styles.input}
-                    />
+            <IonContent fullscreen>
+                {/* 1. SATU Container utama untuk menengahkan */}
+                <div className={styles.container}>
 
-                    <IonButton expand="block" onClick={handleLogin} className={styles.loginButton}>
-                        Login
-                    </IonButton>
-                    <IonButton fill="clear" expand="block" routerLink="/register">
-                        Belum punya akun? Daftar di sini
-                    </IonButton>
+                    {/* 2. SATU loginBox di dalamnya */}
+                    <div className={styles.loginBox}>
+                        <div className={styles.logo}>
+                            <h1>Adhivasindo LMS</h1>
+                        </div>
+                        <h2>Login</h2>
+                        <p>Silakan masuk untuk melanjutkan</p>
+                        
+                        <IonInput
+                            label="Email"
+                            labelPlacement="floating"
+                            fill="outline"
+                            type="email"
+                            value={email}
+                            onIonInput={(e) => setEmail(e.detail.value!)}
+                            className={styles.input}
+                        />
+                        
+                        <IonInput
+                            label="Password"
+                            labelPlacement="floating"
+                            fill="outline"
+                            type="password"
+                            value={password}
+                            onIonInput={(e) => setPassword(e.detail.value!)}
+                            className={styles.input}
+                        />
+
+                        <IonButton expand="block" onClick={handleLogin} className={styles.loginButton}>
+                            Login
+                        </IonButton>
+                        
+                        <IonButton fill="clear" expand="block" routerLink="/register">
+                            Belum punya akun? Daftar di sini
+                        </IonButton>
+                    </div>
+
                 </div>
-
-                <IonToast
-                    isOpen={showToast}
-                    onDidDismiss={() => setShowToast(false)}
-                    message={toastMessage}
-                    duration={3000}
-                    color="danger"
-                />
             </IonContent>
+            <IonToast
+                isOpen={showToast}
+                onDidDismiss={() => setShowToast(false)}
+                message={toastMessage}
+                duration={3000}
+                color="danger"
+            />
         </IonPage>
     );
 };
