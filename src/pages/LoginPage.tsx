@@ -59,6 +59,9 @@ const LoginPage: React.FC = () => {
                     <IonButton expand="block" onClick={handleLogin} className={styles.loginButton}>
                         Login
                     </IonButton>
+                    <IonButton fill="clear" expand="block" routerLink="/register">
+                        Belum punya akun? Daftar di sini
+                    </IonButton>
                 </div>
 
                 <IonToast
