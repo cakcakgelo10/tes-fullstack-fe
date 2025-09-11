@@ -1,0 +1,53 @@
+.card {
+  background: linear-gradient(105deg, #6e45e2 0%, #88d3ce 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+  font-weight: bold;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+.card h2 {
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  opacity: 0.9;
+  line-height: 1.6;
+  max-width: 80%;
+}
+
+.footer {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.meta {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.actionButton {
+  --background: #ffffff;
+  --color: #6e45e2;
+  --border-radius: 8px;
+  --box-shadow: none;
+  font-weight: bold;
+}

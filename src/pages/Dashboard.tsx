@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { IonPage, IonContent, IonSpinner } from '@ionic/react';
 import { getAllContents } from '../services/api';
 import styles from './Dashboard.module.css';
-
 import Sidebar from '../components/Sidebar/Sidebar';
 import ModuleCard from '../components/ModuleCard/ModuleCard';
+import CourseHighlight from '../components/CourseHighlight/CourseHighlight';
 
 interface Module {
   id: number;
@@ -40,6 +40,8 @@ const Dashboard: React.FC = () => {
             <Sidebar />
           </div>
           <div className={styles.mainContent}>
+            <CourseHighlight />
+            
             <h2>Modul Kompetensi</h2>
             {isLoading ? (
               <div className={styles.spinnerContainer}>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { IonList, IonItem, IonLabel, IonIcon } from '@ionic/react';
-// 1. Impor useHistory untuk navigasi
 import { useHistory } from 'react-router-dom';
 import { gridOutline, readerOutline, peopleOutline, chatbubblesOutline, personCircleOutline, settingsOutline, calendarOutline, logOutOutline } from 'ionicons/icons';
 import styles from './Sidebar.module.css';
@@ -19,15 +18,10 @@ const profileItems = [
 ]
 
 const Sidebar: React.FC = () => {
-  // 2. Inisialisasi hook useHistory
   const history = useHistory();
-
-  // 3. Buat fungsi untuk handle logout
   const handleLogout = () => {
-    // Hapus token dari localStorage
     localStorage.removeItem('jwt_token');
     
-    // Arahkan pengguna kembali ke halaman login
     history.push('/login');
   };
 
@@ -56,7 +50,6 @@ const Sidebar: React.FC = () => {
         </IonList>
       </div>
       <div className={styles.logoutSection}>
-        {/* 4. Tambahkan event onClick ke tombol Log Out */}
         <IonItem lines="none" button onClick={handleLogout}>
           <IonIcon slot="start" icon={logOutOutline} color="danger" />
           <IonLabel color="danger">Log Out</IonLabel>
