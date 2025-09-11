@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { IonPage, IonContent, IonSpinner } from '@ionic/react';
+import { IonPage, IonContent, IonSpinner, IonButton, IonIcon } from '@ionic/react';
+import { menuOutline } from 'ionicons/icons';
 import { getAllContents } from '../services/api';
 import styles from './Dashboard.module.css';
 import Sidebar from '../components/Sidebar/Sidebar';
-import ModuleCard from '../components/ModuleCard/ModuleCard';
 import CourseHighlight from '../components/CourseHighlight/CourseHighlight';
+import ModuleCard from '../components/ModuleCard/ModuleCard';
+import ProfileHeader from '../components/ProfileHeader/ProfileHeader';
+import CalendarWidget from '../components/CalendarWidget/CalendarWidget';
+import ScheduleList from '../components/ScheduleList/ScheduleList';
 
 interface Module {
   id: number;
@@ -15,6 +19,11 @@ interface Module {
 const Dashboard: React.FC = () => {
   const [modules, setModules] = useState<Module[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   useEffect(() => {
     const fetchModules = async () => {
@@ -28,7 +37,6 @@ const Dashboard: React.FC = () => {
         setIsLoading(false);
       }
     };
-
     fetchModules();
   }, []);
 
@@ -36,12 +44,24 @@ const Dashboard: React.FC = () => {
     <IonPage>
       <IonContent fullscreen>
         <div className={styles.dashboardContainer}>
-          <div className={styles.sidebar}>
+          <div className={`${styles.sidebar} ${isMenuOpen ? styles.sidebarOpen : ''}`}>
             <Sidebar />
           </div>
+
+          <div 
+            className={`${styles.backdrop} ${isMenuOpen ? styles.backdropOpen : ''}`}
+            onClick={toggleMenu} 
+          />
+
           <div className={styles.mainContent}>
+            <header className={styles.mobileHeader}>
+              <IonButton fill="clear" className={styles.hamburgerButton} onClick={toggleMenu}>
+                <IonIcon slot="icon-only" icon={menuOutline} />
+              </IonButton>
+              <h1 className={styles.mobileTitle}>Adhivasindo</h1>
+            </header>
+
             <CourseHighlight />
-            
             <h2>Modul Kompetensi</h2>
             {isLoading ? (
               <div className={styles.spinnerContainer}>
@@ -53,15 +73,18 @@ const Dashboard: React.FC = () => {
                   <ModuleCard
                     key={mod.id}
                     title={mod.title}
-                    image={'https://via.placeholder.com/150'}
+                    image={'https://placehold.co/150x150'}
                     color="#4a47a3"
                   />
                 ))}
               </div>
             )}
           </div>
+
           <div className={styles.rightPanel}>
-            <p>Right Panel Area</p>
+            <ProfileHeader />
+            <CalendarWidget />
+            <ScheduleList />
           </div>
         </div>
       </IonContent>

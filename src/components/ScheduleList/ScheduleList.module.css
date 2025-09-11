@@ -1,0 +1,68 @@
+h4 {
+  font-size: 1rem;
+  color: #888;
+  font-weight: bold;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.listItem {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 5px solid;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.itemContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemContent strong {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.itemContent span {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.arrow {
+  font-weight: bold;
+  color: #ccc;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.listItem {
+  opacity: 0; 
+  animation: fadeInUp 0.5s ease-out forwards; 
+}
+
+.listItem:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.listItem:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.listItem:nth-child(3) {
+  animation-delay: 0.6s;
+}

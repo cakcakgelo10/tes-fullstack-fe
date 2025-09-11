@@ -1,19 +1,17 @@
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
-import Dashboard from './pages/Dashboard';
-import ProtectedRoute from './components/ProtectedRoute';
 
-/* Core CSS required for Ionic components to work properly */
+import LoginPage from './pages/LoginPage';
+import ProtectedRoute from './components/ProtectedRoute';
+import Tabs from './pages/Tabs';
+
 import '@ionic/react/css/core.css';
 
-/* Basic CSS for apps built with Ionic */
 import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
 import '@ionic/react/css/typography.css';
 
-/* Optional CSS utils that can be commented out */
 import '@ionic/react/css/padding.css';
 import '@ionic/react/css/float-elements.css';
 import '@ionic/react/css/text-alignment.css';
@@ -21,7 +19,6 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
-/* Theme variables */
 import './theme/variables.css';
 
 setupIonicReact();
@@ -32,11 +29,11 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonRouterOutlet>
           
-          {/* Rute 1: Halaman Login */}
+          {/* Rute 1: Halaman Login (Publik) */}
           <Route path="/login" component={LoginPage} exact={true} />
           
-          {/* Rute 2: Halaman Dashboard */}
-          <ProtectedRoute path="/dashboard" component={Dashboard} exact={true} />
+          {/* Rute 2: Mengarahkan semua path di bawah /tabs ke komponen Tabs (Dilindungi) */}
+          <ProtectedRoute path="/tabs" component={Tabs} />
 
           {/* Rute 3: Halaman utama (root) akan selalu diarahkan ke /login */}
           <Route path="/" exact={true}>

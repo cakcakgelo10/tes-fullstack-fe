@@ -20,7 +20,7 @@ const LoginPage: React.FC = () => {
             localStorage.setItem('jwt_token', token);
 
             // Mengarahkan ke halaman dashboard
-            history.push('/dashboard');
+            history.push('/tabs/dashboard');
 
         } catch (error) {
             setToastMessage('Login Gagal. Periksa kembali email dan password Anda.');

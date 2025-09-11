@@ -39,3 +39,9 @@
 .logoutSection ion-item {
   --background: transparent;
 }
+
+@media (max-width: 768px) {
+  .logo {
+    display: none;
+  }
+}
